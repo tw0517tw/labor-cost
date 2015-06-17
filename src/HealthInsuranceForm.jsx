@@ -16,8 +16,8 @@ let HealthInsuranceForm = React.createClass({
     let rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
     let totalFee = Math.round(rankedSalary * healthInsuranceFee.rate);
     let youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you);
-    let bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss);
-    let govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov);
+    let bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss * (1+healthInsuranceFee.avgFamilyMember));
+    let govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov * (1+healthInsuranceFee.avgFamilyMember));
     return (
       <Table>
         <thead>
