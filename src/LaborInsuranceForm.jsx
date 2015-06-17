@@ -14,10 +14,10 @@ let LaborInsuranceForm = React.createClass({
 
   render(){
     let rankedSalary = findRank(this.props.salary, laborInsuranceFee.rank);
-    let totalFee = rankedSalary * laborInsuranceFee.rate;
-    let youPay = totalFee * laborInsuranceFee.ratio.company.you;
-    let bossPay = totalFee * laborInsuranceFee.ratio.company.boss;
-    let govPay = totalFee * laborInsuranceFee.ratio.company.gov;
+    let totalFee = Math.round(rankedSalary * laborInsuranceFee.rate);
+    let youPay = Math.round(totalFee * laborInsuranceFee.ratio.company.you);
+    let bossPay = Math.round(totalFee * laborInsuranceFee.ratio.company.boss);
+    let govPay = Math.round(totalFee * laborInsuranceFee.ratio.company.gov);
     return (
       <Table>
         <thead>

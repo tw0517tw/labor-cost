@@ -30841,10 +30841,10 @@
 
 	  render: function render() {
 	    var rankedSalary = findRank(this.props.salary, laborInsuranceFee.rank);
-	    var totalFee = rankedSalary * laborInsuranceFee.rate;
-	    var youPay = totalFee * laborInsuranceFee.ratio.company.you;
-	    var bossPay = totalFee * laborInsuranceFee.ratio.company.boss;
-	    var govPay = totalFee * laborInsuranceFee.ratio.company.gov;
+	    var totalFee = Math.round(rankedSalary * laborInsuranceFee.rate);
+	    var youPay = Math.round(totalFee * laborInsuranceFee.ratio.company.you);
+	    var bossPay = Math.round(totalFee * laborInsuranceFee.ratio.company.boss);
+	    var govPay = Math.round(totalFee * laborInsuranceFee.ratio.company.gov);
 	    return React.createElement(
 	      Table,
 	      null,
