@@ -29115,6 +29115,7 @@
 	var _require = __webpack_require__(158);
 
 	var Table = _require.Table;
+	var Input = _require.Input;
 
 	var healthInsuranceFee = __webpack_require__(250);
 	var findRank = __webpack_require__(251);
@@ -29125,10 +29126,45 @@
 	    salary: React.PropTypes.number
 	  },
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      familyCount: 0
+	    };
+	  },
+
+	  onFamilyCountChange: function onFamilyCountChange() {
+	    this.setState({ familyCount: this.refs.familyCount.getValue() });
+	  },
+
 	  render: function render() {
+	    var familyCountSelect = React.createElement(
+	      Input,
+	      { ref: "familyCount", type: "select", onChange: this.onFamilyCountChange },
+	      React.createElement(
+	        "option",
+	        { value: 0 },
+	        "0"
+	      ),
+	      React.createElement(
+	        "option",
+	        { value: 1 },
+	        "1"
+	      ),
+	      React.createElement(
+	        "option",
+	        { value: 2 },
+	        "2"
+	      ),
+	      React.createElement(
+	        "option",
+	        { value: 3 },
+	        "3或以上"
+	      )
+	    );
+	    console.log(this.state.familyCount);
 	    var rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
 	    var totalFee = Math.round(rankedSalary * healthInsuranceFee.rate);
-	    var youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you);
+	    var youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you) * (1 + parseInt(this.state.familyCount));
 	    var bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss * (1 + healthInsuranceFee.avgFamilyMember));
 	    var govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov * (1 + healthInsuranceFee.avgFamilyMember));
 	    return React.createElement(
@@ -29162,6 +29198,20 @@
 	            "td",
 	            null,
 	            rankedSalary
+	          )
+	        ),
+	        React.createElement(
+	          "tr",
+	          null,
+	          React.createElement(
+	            "td",
+	            null,
+	            "扶養眷屬"
+	          ),
+	          React.createElement(
+	            "td",
+	            null,
+	            familyCountSelect
 	          )
 	        ),
 	        React.createElement(
