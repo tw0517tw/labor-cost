@@ -29129,8 +29129,8 @@
 	    var rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
 	    var totalFee = Math.round(rankedSalary * healthInsuranceFee.rate);
 	    var youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you);
-	    var bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss);
-	    var govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov);
+	    var bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss * (1 + healthInsuranceFee.avgFamilyMember));
+	    var govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov * (1 + healthInsuranceFee.avgFamilyMember));
 	    return React.createElement(
 	      Table,
 	      null,
