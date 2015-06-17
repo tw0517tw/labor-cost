@@ -32,7 +32,7 @@ var config = {
   },
 
   output: {
-    path: "./build/",
+    path: "./",
     filename: "[name].bundle.js"
   },
 
