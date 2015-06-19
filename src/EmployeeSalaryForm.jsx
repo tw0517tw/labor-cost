@@ -31,14 +31,12 @@ let EmployeeSalaryForm = React.createClass({
   render(){
     let salaryError = this.state.salaryError ? {bsStyle: "error"} : null;
     return (
-      <form>
-        <Input ref="salary"
-               onChange={this.handleSalaryChange}
-               label="輸入薪資"
-               placeholder="Enter Salary"
-               type="text"
-               {...salaryError} />
-      </form>
+      <Input ref="salary"
+             onChange={this.handleSalaryChange}
+             label="輸入薪資"
+             placeholder="Enter Salary"
+             type="text"
+             {...salaryError} />
     );
   }
 

@@ -28536,16 +28536,12 @@
 
 	  render: function render() {
 	    var salaryError = this.state.salaryError ? { bsStyle: "error" } : null;
-	    return React.createElement(
-	      "form",
-	      null,
-	      React.createElement(Input, _extends({ ref: "salary",
-	        onChange: this.handleSalaryChange,
-	        label: "輸入薪資",
-	        placeholder: "Enter Salary",
-	        type: "text"
-	      }, salaryError))
-	    );
+	    return React.createElement(Input, _extends({ ref: "salary",
+	      onChange: this.handleSalaryChange,
+	      label: "輸入薪資",
+	      placeholder: "Enter Salary",
+	      type: "text"
+	    }, salaryError));
 	  }
 
 	});
