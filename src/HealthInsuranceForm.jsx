@@ -31,7 +31,7 @@ let HealthInsuranceForm = React.createClass({
         <option value={3}>3或以上</option>
       </Input>
     );
-    console.log(this.state.familyCount);
+
     let rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
     let totalFee = Math.round(rankedSalary * healthInsuranceFee.rate);
     let youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you) * (1+parseInt(this.state.familyCount));
