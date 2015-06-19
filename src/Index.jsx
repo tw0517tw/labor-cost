@@ -55,6 +55,7 @@ let Index = React.createClass({
           </Row>
           <Row>
             <Col className="text-center" md={6} mdOffset={3}>
+              <span>使用薪資級距自 104年7月1日 開始適用</span><br/>
               健保資料來自<a href="http://www.nhi.gov.tw/webdata/webdata.aspx?menu=17&menu_id=1027&webdata_id=4110&WD_ID=1037">衛福部健保署</a>
               <br/>
               勞保資料來自<a href="http://www.bli.gov.tw/sub.aspx?a=UA2ZR%2bHjzD4%3d">勞動部勞保局</a>
