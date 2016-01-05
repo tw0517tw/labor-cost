@@ -9,13 +9,23 @@ const findRank = require("./lib/findRank.js");
 let HealthInsuranceForm = React.createClass({
   displayName: "HealthInsuranceForm",
   propTypes: {
-    salary: React.PropTypes.number
+    salary: React.PropTypes.number,
+    setHealthInsuranceFee: React.PropTypes.func
   },
 
   getInitialState(){
     return ({
       familyCount: 0
     });
+  },
+
+  componentDidUpdate(){
+    let fee = {
+      youPay: parseInt(this.refs.youPay.getDOMNode().textContent),
+      bossPay: parseInt(this.refs.bossPay.getDOMNode().textContent),
+      govPay: parseInt(this.refs.govPay.getDOMNode().textContent)
+    };
+    // this.props.setHealthInsuranceFee(fee);
   },
 
   onFamilyCountChange(){
@@ -33,7 +43,7 @@ let HealthInsuranceForm = React.createClass({
     );
 
     let rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
-    let totalFee = Math.round(rankedSalary * healthInsuranceFee.rate);
+    let totalFee = rankedSalary * healthInsuranceFee.rate;
     let youPay = Math.round(totalFee * healthInsuranceFee.ratio.company.you) * (1+parseInt(this.state.familyCount));
     let bossPay = Math.round(totalFee * healthInsuranceFee.ratio.company.boss * (1+healthInsuranceFee.avgFamilyMember));
     let govPay = Math.round(totalFee * healthInsuranceFee.ratio.company.gov * (1+healthInsuranceFee.avgFamilyMember));
@@ -55,15 +65,15 @@ let HealthInsuranceForm = React.createClass({
           </tr>
           <tr>
             <td>個人負擔</td>
-            <td>{youPay}</td>
+            <td ref="youPay">{youPay}</td>
           </tr>
           <tr>
             <td>雇主負擔</td>
-            <td>{bossPay}</td>
+            <td ref="bossPay">{bossPay}</td>
           </tr>
           <tr>
             <td>政府負擔</td>
-            <td>{govPay}</td>
+            <td ref="govPay">{govPay}</td>
           </tr>
         </tbody>
       </Table>

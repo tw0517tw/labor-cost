@@ -14,7 +14,7 @@ let LaborInsuranceForm = React.createClass({
 
   render(){
     let rankedSalary = findRank(this.props.salary, laborInsuranceFee.rank);
-    let totalFee = Math.round(rankedSalary * laborInsuranceFee.rate);
+    let totalFee = rankedSalary * laborInsuranceFee.rate;
     let youPay = Math.round(totalFee * laborInsuranceFee.ratio.company.you);
     let bossPay = Math.round(totalFee * laborInsuranceFee.ratio.company.boss);
     let govPay = Math.round(totalFee * laborInsuranceFee.ratio.company.gov);
@@ -22,7 +22,7 @@ let LaborInsuranceForm = React.createClass({
       <Table>
         <thead>
           <tr>
-            <th colSpan="2">勞保+就保</th>
+            <th colSpan="2">勞保+就保 (未包含職災費率)</th>
           </tr>
         </thead>
         <tbody>

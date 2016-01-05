@@ -15,13 +15,31 @@ let Index = React.createClass({
 
   getInitialState(){
     return ({
-      salary: 0
+      salary: 0,
+      healthInsuranceFee: null,
+      laborInsuranceFee: null,
+      retirePlanFee: null
     });
   },
 
   setSalary(salary){
     this.setState({
       salary: salary
+    });
+  },
+  setHealthInsuranceFee(fee){
+   this.setState({
+     healthInsuranceFee: fee
+   });
+  },
+  setLaborInsuranceFee(fee){
+    this.setState({
+      laborInsuranceFee: fee
+    });
+  },
+  setRetirePlanFee(fee){
+    this.setState({
+      retirePlanFee: fee
     });
   },
 
@@ -44,20 +62,24 @@ let Index = React.createClass({
           </Row>
           <Row>
             <Col md={4}>
-              <HealthInsuranceForm salary={this.state.salary}/>
+              <HealthInsuranceForm salary={this.state.salary}
+                                   setHealthInsuranceFee={this.setHealthInsuranceFee}/>
             </Col>
             <Col md={4}>
-              <LaborInsuranceForm salary={this.state.salary}/>
+              <LaborInsuranceForm salary={this.state.salary}
+                                  setLaborInsuranceFee={this.setLaborInsuranceFee}/>
             </Col>
             <Col md={4}>
-              <RetirePlanForm salary={this.state.salary}/>
+              <RetirePlanForm salary={this.state.salary}
+                              setRetirePlanFee={this.setRetirePlanFee}/>
             </Col>
           </Row>
           <Row>
             <Col className="text-center" md={6} mdOffset={3}>
-              <span>使用薪資級距自 104年7月1日 開始適用</span><br/>
-              健保資料來自<a href="http://www.nhi.gov.tw/webdata/webdata.aspx?menu=17&menu_id=1027&webdata_id=4110&WD_ID=1037">衛福部健保署</a>
+              <span>健保相關資料自 105年1月1日 開始適用</span><br/>
+              健保資料來自<a href="http://www.nhi.gov.tw/webdata/webdata.aspx?menu=18&menu_id=679&WD_ID=732&webdata_id=4850">衛福部健保署</a>
               <br/>
+              <span>勞保、勞退相關資料自 104年7月1日 開始適用</span><br/>
               勞保資料來自<a href="http://www.bli.gov.tw/sub.aspx?a=UA2ZR%2bHjzD4%3d">勞動部勞保局</a>
               <br/>
               勞退資料來自<a href="http://www.bli.gov.tw/sub.aspx?a=uyDH38mCe%2fM%3d">勞動部勞保局</a>

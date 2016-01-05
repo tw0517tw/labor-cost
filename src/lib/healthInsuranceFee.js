@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = {
-  rate: 0.0491,
-  avgFamilyMember: 0.62,
+  rate: 0.0469,
+  avgFamilyMember: 0.61,
   rank: [
     20008,
     20100,
