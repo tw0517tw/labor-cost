@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   rate: 0.1, // 0.09 Labor Insurance + 0.01 Employment Insurance
   rank: [
     // start from 2018/1/1

@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      salaryInput: '0',
+      salaryInput: '',
       isSalaryValid: true,
       lastValidSalary: 0,
     };
