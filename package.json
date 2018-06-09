@@ -2,7 +2,7 @@
   "private": true,
   "name": "labor-cost",
   "homepage": "http://tw0517tw.github.io/labor-cost",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "react-scripts build",
     "precommit": "lint-staged",
