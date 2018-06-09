@@ -1,0 +1,90 @@
+version: 2
+
+# Reference variables.
+references:
+  docker_default: &docker_default
+    working_directory: /tmp/app
+    docker:
+      - image: circleci/node:8
+    environment:
+      TZ: "/usr/share/zoneinfo/Asia/Taipei"
+
+jobs:
+  build:
+    <<: *docker_default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - cache-{{.Branch}}-{{checksum "yarn.lock"}}
+            - cache-{{.Branch}}
+            - cache
+      - run:
+          name: Install All Dependencies
+          command: |
+            yarn config set cache-folder /tmp/.yarn-cache
+            yarn
+      - save_cache:
+          key: cache-{{.Branch}}-{{checksum "yarn.lock"}}
+          paths:
+            - /tmp/.yarn-cache
+            - ./node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+
+  lint:
+    <<: *docker_default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run lint
+
+  test:
+    <<: *docker_default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run test
+
+  deploy:
+    <<: *docker_default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run deploy
+
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - lint:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*/
+      - test:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - lint
+            - test
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*(-.*)?/
+            branches:
+              ignore: /.*/
