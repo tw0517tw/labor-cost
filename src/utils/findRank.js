@@ -1,7 +1,7 @@
-const _ = require('lodash');
+import { find } from 'lodash';
 
-module.exports = (value, rankArr) =>
-  _.find(rankArr, rankValue => {
+export default function findRank(value, rankArr) {
+  return find(rankArr, rankValue => {
     if (rankValue < rankArr[rankArr.length - 1]) {
       // not last value
       return rankValue >= value;
@@ -10,3 +10,4 @@ module.exports = (value, rankArr) =>
       return value >= rankValue;
     }
   });
+}

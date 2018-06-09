@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // start from 2016/1/1
   rate: 0.0469,
   // start from 2016/1/1

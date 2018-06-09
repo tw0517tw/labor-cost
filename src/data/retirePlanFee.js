@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   rate: 0.06,
   rank: [
     // start from 2018/1/1
