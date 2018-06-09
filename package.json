@@ -1,31 +1,56 @@
 {
+  "private": true,
   "name": "labor-cost",
-  "version": "0.0.1",
-  "description": "calculate overall insurance cost",
-  "main": "index.html",
-  "dependencies": {
-    "babel-core": "^5.5.8",
-    "babel-loader": "^5.1.4",
-    "babel-runtime": "^5.5.8",
-    "bootstrap": "^3.3.4",
-    "css-loader": "^0.14.5",
-    "file-loader": "^0.8.4",
-    "loader-utils": "^0.2.9",
-    "node-libs-browser": "^0.5.2",
-    "react": "^0.13.3",
-    "react-bootstrap": "^0.23.4",
-    "react-hot-loader": "^1.2.7",
-    "style-loader": "^0.12.3",
-    "underscore": "^1.8.3",
-    "url-loader": "^0.5.6",
-    "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0"
-  },
-  "devDependencies": {},
+  "version": "0.1.0",
   "scripts": {
-    "dev": "webpack-dev-server --port 3000 --devtool eval --progress --hot --colors --content-base",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "react-scripts build",
+    "precommit": "lint-staged",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
-  "author": "tw0517tw",
-  "license": "MIT"
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "cross-env": "^5.1.6",
+    "eslint": "^4.19.1",
+    "eslint-config-yoctol": "^0.16.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.3",
+    "prettier": "^1.13.5",
+    "prettier-package-json": "^1.6.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.babelrc": [
+      "prettier --parser json --write",
+      "git add"
+    ],
+    "*package.json": [
+      "prettier-package-json --write",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  }
 }

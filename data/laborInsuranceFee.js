@@ -1,8 +1,7 @@
-"use strict";
-
 module.exports = {
-	rate: 0.1, //0.09 Labor Insurance + 0.01 Employment Insurance
-  rank: [ //start from 2015/7/1
+  rate: 0.1, // 0.09 Labor Insurance + 0.01 Employment Insurance
+  rank: [
+    // start from 2015/7/1
     11100,
     12540,
     13500,
@@ -29,13 +28,13 @@ module.exports = {
     38200,
     40100,
     42000,
-    43900
+    43900,
   ],
   ratio: {
     company: {
       you: 0.2,
       boss: 0.7,
-      gov: 0.1
-    }
-  }
+      gov: 0.1,
+    },
+  },
 };
