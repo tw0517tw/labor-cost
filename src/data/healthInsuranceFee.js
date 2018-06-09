@@ -1,11 +1,11 @@
 module.exports = {
-  rate: 0.0491,
-  avgFamilyMember: 0.62,
+  // start from 2016/1/1
+  rate: 0.0469,
+  // start from 2016/1/1
+  avgFamilyMember: 0.61,
   rank: [
-    20008,
-    20100,
-    21000,
-    21900,
+    // start from 2018/1/1
+    22000,
     22800,
     24000,
     25200,

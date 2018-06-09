@@ -1,16 +1,39 @@
 import React, { Component } from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  Container,
-  Row,
-  Col,
-  Label,
-  Input,
-} from 'reactstrap';
+import { Navbar, NavbarBrand, Container, Row, Col } from 'reactstrap';
+
+import EmployeeSalaryForm from './components/EmployeeSalaryForm';
+import HealthInsuranceTable from './components/HealthInsuranceTable';
+import LaborInsuranceTable from './components/LaborInsuranceTable';
+import RetirePlanTable from './components/RetirePlanTable';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      salaryInput: '0',
+      isSalaryValid: true,
+      lastValidSalary: 0,
+    };
+  }
+
+  handleSalaryChange = e => {
+    const salaryInput = e.target.value;
+    const salaryNumber = +salaryInput;
+
+    if (Number.isNaN(salaryNumber) || !Number.isFinite(salaryNumber)) {
+      this.setState(() => ({ salaryInput, isSalaryValid: false }));
+      return;
+    }
+    this.setState(() => ({
+      salaryInput,
+      isSalaryValid: true,
+      lastValidSalary: +salaryInput,
+    }));
+  };
+
   render() {
+    const { salaryInput, isSalaryValid, lastValidSalary } = this.state;
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -19,23 +42,45 @@ class App extends Component {
         <Container>
           <Row>
             <Col md={{ size: 6, offset: 3 }}>
-              <Label htmlFor="投保薪資">投保薪資</Label>
-              <Input id="投保薪資" />
+              <EmployeeSalaryForm
+                salary={salaryInput}
+                valid={isSalaryValid}
+                updateSalary={this.handleSalaryChange}
+              />
             </Col>
           </Row>
-
+          <Row style={{ marginTop: '20px' }}>
+            <Col md={{ size: 4 }}>
+              <HealthInsuranceTable salary={lastValidSalary} />
+            </Col>
+            <Col md={{ size: 4 }}>
+              <LaborInsuranceTable salary={lastValidSalary} />
+            </Col>
+            <Col md={{ size: 4 }}>
+              <RetirePlanTable salary={lastValidSalary} />
+            </Col>
+          </Row>
           <Row>
-            <Col md={{ size: 4 }}>
-              <Label for="健保">健保</Label>
-              <Input id="健保" />
-            </Col>
-            <Col md={{ size: 4 }}>
-              <Label for="勞保">勞保</Label>
-              <Input id="勞保" />
-            </Col>
-            <Col md={{ size: 4 }}>
-              <Label for="勞退">勞退</Label>
-              <Input id="勞退" />
+            <Col className="text-center" md={{ size: 6, offset: 3 }}>
+              <span>健保相關資料自 107年1月1日 開始適用</span>
+              <br />
+              健保資料來自
+              <a href="https://www.nhi.gov.tw/Content_List.aspx?n=FFE36DCABA22D234&topn=3185A4DF68749BA9">
+                衛福部健保署
+              </a>
+              <br />
+              <span>勞保、勞退相關資料自 107年1月1日 開始適用</span>
+              <br />
+              勞保資料來自
+              <a href="http://www.bli.gov.tw/sub.aspx?a=UA2ZR%2bHjzD4%3d">
+                勞動部勞保局
+              </a>
+              <br />
+              勞退資料來自
+              <a href="http://www.bli.gov.tw/sub.aspx?a=uyDH38mCe%2fM%3d">
+                勞動部勞保局
+              </a>
+              <br />
             </Col>
           </Row>
         </Container>

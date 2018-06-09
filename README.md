@@ -1,11 +1,11 @@
 # labor-cost
 
 This is a tool for calculating labor cost. Automatically calculate Labor Insurance, Retire Plan Fee, and Health Insurance.
-The salary-to-fee tables take effect after 2015/07/01.
+The salary-to-fee tables take effect after 2018/07/01.
 [Demo site.](http://tw0517tw.github.io/labor-cost)
 
 這是一個小工具，可以計算雇主在僱用員工時，以投保薪資計算勞保勞退健保等各項支出。
-使用的投保薪資級距表自**104 年 7 月 1 日**開始適用。
+使用的投保薪資級距表自**107 年 7 月 1 日**開始適用。
 [Demo 網站](http://tw0517tw.github.io/labor-cost)
 
 ## Contributing

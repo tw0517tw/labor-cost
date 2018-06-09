@@ -1,7 +1,8 @@
 {
   "private": true,
   "name": "labor-cost",
-  "version": "0.1.0",
+  "homepage": "http://tw0517tw.github.io/labor-cost",
+  "version": "0.0.1",
   "scripts": {
     "build": "react-scripts build",
     "precommit": "lint-staged",
@@ -13,6 +14,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4",

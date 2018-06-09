@@ -1,7 +1,7 @@
 module.exports = {
   rate: 0.1, // 0.09 Labor Insurance + 0.01 Employment Insurance
   rank: [
-    // start from 2015/7/1
+    // start from 2018/1/1
     11100,
     12540,
     13500,
@@ -11,9 +11,8 @@ module.exports = {
     17880,
     19047,
     20008,
-    20100,
-    21000,
-    21900,
+    21009,
+    22000,
     22800,
     24000,
     25200,
@@ -29,6 +28,7 @@ module.exports = {
     40100,
     42000,
     43900,
+    45800,
   ],
   ratio: {
     company: {
