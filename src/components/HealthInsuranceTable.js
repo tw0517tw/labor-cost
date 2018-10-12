@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Input } from 'reactstrap';
+import React, { Component } from 'react';
+import { Input, Table } from 'reactstrap';
 
 import findRank from '../utils/findRank';
 import healthInsuranceFee from '../data/healthInsuranceFee';
@@ -20,6 +20,9 @@ class HealthInsuranceTable extends Component {
   };
 
   render() {
+    const { salary } = this.props;
+    const { familyCount } = this.state;
+
     const familyCountSelect = (
       <Input type="select" onChange={this.onFamilyCountChange}>
         <option value={0}>0</option>
@@ -29,11 +32,11 @@ class HealthInsuranceTable extends Component {
       </Input>
     );
 
-    const rankedSalary = findRank(this.props.salary, healthInsuranceFee.rank);
+    const rankedSalary = findRank(salary, healthInsuranceFee.rank);
     const totalFee = rankedSalary * healthInsuranceFee.rate;
     const youPay =
       Math.round(totalFee * healthInsuranceFee.ratio.company.you) *
-      (1 + this.state.familyCount);
+      (1 + familyCount);
     const bossPay = Math.round(
       totalFee *
         healthInsuranceFee.ratio.company.boss *
