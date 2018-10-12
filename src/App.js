@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Container, Row, Col } from 'reactstrap';
+import { Col, Container, Navbar, NavbarBrand, Row } from 'reactstrap';
 
 import EmployeeSalaryForm from './components/EmployeeSalaryForm';
 import HealthInsuranceTable from './components/HealthInsuranceTable';

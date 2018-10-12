@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Label, Input } from 'reactstrap';
+import React, { Fragment } from 'react';
+import { Input, Label } from 'reactstrap';
 
 const EmployeeSalaryForm = ({ salary, updateSalary, valid }) => (
   <Fragment>
