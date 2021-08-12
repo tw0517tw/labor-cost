@@ -1,0 +1,47 @@
+name: Node.js CI
+
+env:
+  NODE_VERSION_USED_FOR_DEVELOPMENT: 14
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ env.NODE_VERSION_USED_FOR_DEVELOPMENT }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION_USED_FOR_DEVELOPMENT }}
+
+      - run: yarn config set cache-folder ~/.yarn-cache
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn-cache
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn test
+
+      - name: Check Tag
+        id: check-tag
+        run: |
+          if [[ ${{ github.ref }} =~ ^refs/tags/v[0-9]+(\.[0-9]+)*(-.*)?$ ]]; then
+              echo ::set-output name=match::true
+          fi
+      - name: Build
+        if: steps.check-tag.outputs.match == 'true'
+        run: |
+          yarn deploy
