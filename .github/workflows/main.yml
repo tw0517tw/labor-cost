@@ -46,6 +46,8 @@ jobs:
       - name: deploy
         if: steps.check-tag.outputs.match == 'true'
         run: |
-          git config --global user.email 1003146+tw0517tw@users.noreply.github.com
-          git config --global user.name tw0517tw
-          yarn deploy
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn build
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
