@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Input, Label } from 'reactstrap';
 
 const EmployeeSalaryForm = ({ salary, updateSalary, valid }) => (
-  <Fragment>
+  <>
     <Label htmlFor="投保薪資">投保薪資</Label>
     <Input
       id="投保薪資"
@@ -12,7 +12,7 @@ const EmployeeSalaryForm = ({ salary, updateSalary, valid }) => (
       onChange={updateSalary}
       invalid={!valid}
     />
-  </Fragment>
+  </>
 );
 
 EmployeeSalaryForm.propTypes = {

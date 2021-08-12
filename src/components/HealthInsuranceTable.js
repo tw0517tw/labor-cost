@@ -14,7 +14,7 @@ class HealthInsuranceTable extends Component {
     };
   }
 
-  onFamilyCountChange = e => {
+  onFamilyCountChange = (e) => {
     const familyCount = +e.target.value;
     this.setState(() => ({ familyCount }));
   };

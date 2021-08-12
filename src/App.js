@@ -17,7 +17,7 @@ class App extends Component {
     };
   }
 
-  handleSalaryChange = e => {
+  handleSalaryChange = (e) => {
     const salaryInput = e.target.value;
     const salaryNumber = +salaryInput;
 
