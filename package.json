@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "labor-cost",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "http://tw0517tw.github.io/labor-cost",
   "scripts": {
     "build": "react-scripts build",
