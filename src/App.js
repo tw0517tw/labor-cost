@@ -54,24 +54,20 @@ const App = () => {
         </Row>
         <Row>
           <Col className="text-center" md={{ size: 6, offset: 3 }}>
-            <span>健保相關資料自 107年1月1日 開始適用</span>
+            <span>健保相關資料自 110年1月1日 開始適用</span>
             <br />
             健保資料來自
-            <a href="https://www.nhi.gov.tw/Content_List.aspx?n=FFE36DCABA22D234&topn=3185A4DF68749BA9">
+            <a href="https://www.nhi.gov.tw/Content_List.aspx?n=23E61FA6B5799914&topn=5FE8C9FEAE863B46">
               衛福部健保署
             </a>
             <br />
-            <span>勞保、勞退相關資料自 107年1月1日 開始適用</span>
+            <span>勞保、勞退相關資料自 110年1月1日 開始適用</span>
             <br />
             勞保資料來自
-            <a href="http://www.bli.gov.tw/sub.aspx?a=UA2ZR%2bHjzD4%3d">
-              勞動部勞保局
-            </a>
+            <a href="https://www.bli.gov.tw/0011588.html">勞動部勞保局</a>
             <br />
             勞退資料來自
-            <a href="http://www.bli.gov.tw/sub.aspx?a=uyDH38mCe%2fM%3d">
-              勞動部勞保局
-            </a>
+            <a href="https://www.bli.gov.tw/0013083.html">勞動部勞保局</a>
             <br />
           </Col>
         </Row>
